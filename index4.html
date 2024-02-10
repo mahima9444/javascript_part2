@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Edit and remove DOM elements</title>
+  </head>
+  <body style="background-color: rgb(102, 82, 57); color: whitesmoke">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    function addlanguage(langName) {
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`;
+      document.querySelector(".language").appendChild(li);
+    }
+    addlanguage("HTML");
+    // addlanguage("CSS");
+    // addlanguage("Java");
+    // addlanguage("Python");
+
+    function add(langName) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(langName));
+      document.querySelector(".language").appendChild(li);
+    }
+
+    add("CSS");
+
+    // edit
+    const secondLanguage = document.querySelector("li:nth-child(2)");
+    // secondLanguage.innerHTML = "Python";
+    const newli = document.createElement("li");
+    newli.textContent = "Python";
+    secondLanguage.replaceWith(newli);
+
+    const firstLanguage = document.querySelector("li:first-child");
+    firstLanguage.outerHTML = "<li>Typescript</li>";
+
+    // remove
+    const lastLanguage = document.querySelector("li:last-child");
+    lastLanguage.remove();
+  </script>
+</html>
