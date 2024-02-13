@@ -1,0 +1,29 @@
+<!-- js is synchronous & single threaded -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>setTimeout & clearTimeout</title>
+  </head>
+  <body>
+    <h2>Hello</h2>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    const say = function () {
+      console.log("tanu");
+    };
+
+    const changeText = function () {
+      document.querySelector("h2").innerHTML = "Best javascript series";
+      // document.getElementsByTagName("h2").innerHTML = "Best javascript series";
+    };
+
+    setTimeout(say, 3000);
+    const changeMe = setTimeout(changeText, 3000);
+    document.getElementById("stop").addEventListener("click", function () {
+      clearTimeout(changeMe);
+      console.log("Stopped");
+    });
+  </script>
+</html>

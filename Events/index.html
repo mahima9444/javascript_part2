@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML events</title>
+  </head>
+  <body style="background-color: rgb(170, 212, 197)">
+    <div>
+      <!-- ul>li*4 -->
+      <ul id="images">
+        <h3>Flower images</h3>
+        <li>
+          <img width="200px" id="rose" src="img1.webp" alt="photoshop" />
+        </li>
+        <li>
+          <img width="200px" id="jasmine" src="img3.jfif" alt="photoshop" />
+        </li>
+        <li>
+          <img width="200px" id="photoshop" src="img2.webp" alt="photoshop" />
+        </li>
+        <li>
+          <img width="200px" id="photoshop" src="img4.jfif" alt="photoshop" />
+        </li>
+        <li>
+          <a
+            style="color: blueviolet"
+            id="googleFonts"
+            href="https://fonts.google.com/icons"
+            >Google Fonts</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // document.getElementById("jasmine").onclick = function () {
+    //   alert("jasmine");
+    // };
+
+    /* Event propagation: 1. capturing, 2. bubbling */
+    // Bubbling “bottom to top” false
+    // Capturing if value is true, “top to bottom”. true
+
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     alert("iamges");
+    //     console.log("image is clicked in ul");
+    //   },
+    //   false
+    // );
+    // document.getElementById("rose").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     alert("flower");
+    //     console.log("flower");
+    //     e.stopPropagation();
+    //   },
+    //   false
+    // );
+
+    // document.getElementById("googleFonts").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    //     console.log("google fonts is clicked");
+    //   },
+    //   false
+    // );
+
+    document.getElementById("images").addEventListener("click", function (e) {
+      // console.log(e.target.parentNode);
+      console.log(e.target.tagName);
+      if (e.target.tagName === "IMG") {
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode;
+        removeIt.remove();
+      }
+      // removeIt.parentNode.removeChild(removeIt);
+    });
+  </script>
+</html>
