@@ -1,32 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DOM</title>
+    <title>Stopwatch</title>
     <style>
-      .bg-black {
-        background-color: rgb(175, 96, 96);
-        color: azure;
+      body {
+        background-color: lavender;
+        color: black;
+      }
+      .center {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+       button {
+        margin: 10px 10px;
       }
     </style>
   </head>
-  <body class="bg-black">
-    <div>
-      <h1 id="title" class="heading">
-        Hello <span style="display: none">test text</span>
-      </h1>
-      <h1 id="title" class="heading">Lorem ipsum dolor sit amet.</h1>
-      <h1 id="title" class="heading">Lorem ipsum dolor sit amet.</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-        repellat facere illum laboriosam voluptate perferendis.
-      </p>
-      <h3>list</h3>
-      <ul>
-        <li class="list-item">One</li>
-        <li class="list-item">Two</li>
-        <li class="list-item">Three</li>
-        <li class="list-item">Four</li>
-      </ul>
+  <body>
+    <div class="center">
+      <div style="font-size: 50px" id="stopwatch">00:00:00</div>
+
+      <button onclick="startStopwatch()">Start</button>
+      <button onclick="stopStopwatch()">Stop</button>
+      <button onclick="resetStopwatch()">Reset</button>
     </div>
+    <script>
+      let timer;
+      let time = 0;
+
+      function startStopwatch() {
+        running = true;
+        timer = setInterval(updateStopwatch, 1000);
+      }
+
+      function stopStopwatch() {
+        clearInterval(timer);
+      }
+
+      function resetStopwatch() {
+        document.querySelector("#stopwatch").textContent = "00:00:00";
+      }
+
+      function updateStopwatch() {
+        time++;
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        const formattedTime =
+          pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+        document.querySelector("#stopwatch").textContent = formattedTime;
+      }
+
+      function pad(num) {
+        return (num < 10 ? "0" : "") + num;
+      }
+    </script>
   </body>
 </html>

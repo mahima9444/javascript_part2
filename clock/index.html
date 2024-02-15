@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your Local Time</title>
+    <style>
+      body {
+        background-color: lavender;
+        color: black;
+      }
+      .center {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #clock {
+        font-size: 40px;
+        background-color: orange;
+        padding: 20px 50px;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+      button {
+        margin: 10px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <div id="banner"><span>Your local time</span></div>
+      <div id="clock"></div>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+    </div>
+
+    <script src="javascript.js"></script>
+  </body>
+</html>

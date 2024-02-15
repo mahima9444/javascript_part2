@@ -1,5 +1,6 @@
 const buttons = document.querySelectorAll('.button');
 const body = document.querySelector("body");
+
 // const buttons = document.getElementById("lavender") 
 
 // buttons.addEventListener('click', function(e){
